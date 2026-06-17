@@ -6,8 +6,8 @@ import jakarta.persistence.*;
 @Table(name = "categorias")
 public class Categorias {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nomedacategoria;
     private String descricao;
 
@@ -20,17 +20,17 @@ public class Categorias {
     }
 
     public Categorias(long idcategoria, String nomedacategoria, String descricao) {
-        this.Id = idcategoria;
+        this.id = idcategoria;
         this.nomedacategoria = nomedacategoria;
         this.descricao = descricao;
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        this.Id = id;
+        this.id = id;
     }
 
     public String getNomedacategoria() {

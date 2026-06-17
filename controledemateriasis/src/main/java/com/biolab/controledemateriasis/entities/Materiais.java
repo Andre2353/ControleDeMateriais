@@ -3,10 +3,10 @@ package com.biolab.controledemateriasis.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name = "materiais")
+@Table(name = "materiais")
 public class Materiais {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "idcategoria")
@@ -16,36 +16,46 @@ public class Materiais {
     private double valorUnitario;
     private Integer quantidade;
     private Integer valorMinimo;
-    private Integer getValorMaximo;
+    private Integer valorMaximo;
 
     public Materiais() {
     }
 
-    public Materiais(long id, String nomedoMatrial, String unidadeeMedida, double valorUnitario, Integer quantidade, Integer valorMinimo, Integer getValorMaximo) {
+    public Materiais(Categorias categorias, String nomedomaterial, String unidadeeMedida, double valorUnitario, Integer quantidade, Integer valorMinimo, Integer valorMaximo) {
+        this.categorias = categorias;
+        this.nomedomaterial = nomedomaterial;
+        this.unidadeeMedida = unidadeeMedida;
+        this.valorUnitario = valorUnitario;
+        this.quantidade = quantidade;
+        this.valorMinimo = valorMinimo;
+        this.valorMaximo = valorMaximo;
+    }
+
+    public Materiais(Long id, Categorias categorias, String nomedomaterial, String unidadeeMedida, double valorUnitario, Integer quantidade, Integer valorMinimo, Integer valorMaximo) {
         this.id = id;
-        this.nomedomaterial = nomedoMatrial;
+        this.categorias = categorias;
+        this.nomedomaterial = nomedomaterial;
         this.unidadeeMedida = unidadeeMedida;
         this.valorUnitario = valorUnitario;
         this.quantidade = quantidade;
         this.valorMinimo = valorMinimo;
-        this.getValorMaximo = getValorMaximo;
+        this.valorMaximo = valorMaximo;
     }
 
-    public Materiais( String nomedoMatrial, String unidadeeMedida, double valorUnitario, Integer quantidade, Integer valorMinimo, Integer getValorMaximo) {
-        this.nomedomaterial = nomedoMatrial;
-        this.unidadeeMedida = unidadeeMedida;
-        this.valorUnitario = valorUnitario;
-        this.quantidade = quantidade;
-        this.valorMinimo = valorMinimo;
-        this.getValorMaximo = getValorMaximo;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Categorias getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(Categorias categorias) {
+        this.categorias = categorias;
     }
 
     public String getNomedomaterial() {
@@ -88,11 +98,11 @@ public class Materiais {
         this.valorMinimo = valorMinimo;
     }
 
-    public Integer GetValorMaximo() {
-        return getValorMaximo;
+    public Integer getValorMaximo() {
+        return valorMaximo;
     }
 
-    public void setGetValorMaximo(Integer getValorMaximo) {
-        this.getValorMaximo = getValorMaximo;
+    public void setValorMaximo(Integer valorMaximo) {
+        this.valorMaximo = valorMaximo;
     }
 }
